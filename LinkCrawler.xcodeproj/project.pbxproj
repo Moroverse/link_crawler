@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C60AB3A3254D689800E35B86 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AB3A2254D689800E35B86 /* main.swift */; };
+		C60AB3AD254D6A9A00E35B86 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AB3AC254D6A9A00E35B86 /* Parser.swift */; };
+		C60AB3B0254D6AE800E35B86 /* HTMLLinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AB3AF254D6AE800E35B86 /* HTMLLinkParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,9 @@
 /* Begin PBXFileReference section */
 		C60AB393254D67DA00E35B86 /* LinkCrawler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LinkCrawler; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60AB3A2254D689800E35B86 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C60AB3A6254D693800E35B86 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C60AB3AC254D6A9A00E35B86 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		C60AB3AF254D6AE800E35B86 /* HTMLLinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLLinkParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 		C60AB38A254D67DA00E35B86 = {
 			isa = PBXGroup;
 			children = (
+				C60AB3A6254D693800E35B86 /* .swiftlint.yml */,
 				C60AB3A1254D689800E35B86 /* Sources */,
 				C60AB394254D67DA00E35B86 /* Products */,
 			);
@@ -57,6 +63,8 @@
 		C60AB3A1254D689800E35B86 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C60AB3AC254D6A9A00E35B86 /* Parser.swift */,
+				C60AB3AF254D6AE800E35B86 /* HTMLLinkParser.swift */,
 				C60AB3A2254D689800E35B86 /* main.swift */,
 			);
 			path = Sources;
@@ -72,6 +80,7 @@
 				C60AB38F254D67DA00E35B86 /* Sources */,
 				C60AB390254D67DA00E35B86 /* Frameworks */,
 				C60AB391254D67DA00E35B86 /* CopyFiles */,
+				C60AB3A7254D695500E35B86 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -114,11 +123,33 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C60AB3A7254D695500E35B86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#if which swiftlint >/dev/null; then\n#  swiftlint autocorrect\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C60AB38F254D67DA00E35B86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60AB3B0254D6AE800E35B86 /* HTMLLinkParser.swift in Sources */,
+				C60AB3AD254D6A9A00E35B86 /* Parser.swift in Sources */,
 				C60AB3A3254D689800E35B86 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
