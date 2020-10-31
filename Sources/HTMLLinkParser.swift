@@ -14,13 +14,13 @@ class HTMLLinkParser {
     }
     
     static func parse(_ text: String) -> [Link] {
-        
-        let link = zip("<a href=",.prefix(upTo: " ")," title=", .prefix(upTo: ">"), .prefix(through: "</a>")).map{_,ref,_, title, _ in Link(reference: ref.replacingOccurrences(of: "\"", with: ""), title: title.replacingOccurrences(of: "\"", with: ""))}
-        let links = link.zeroOrMore()
+        let aParser = zip(.prefix(upTo: "<a href="),.prefix(through: "</a>")).map { firstPart, secondPart in firstPart+secondPart}
+        let link = zip(.prefix(through: "<a href="),.prefix(upTo: " ")," title=", .prefix(upTo: ">"), .prefix(through: "</a>")).map{_,ref,_, title, _ in Link(reference: ref.replacingOccurrences(of: "\"", with: ""), title: title.replacingOccurrences(of: "\"", with: ""))}
+        let links = aParser.zeroOrMore()
 
         let result = links.run(text)
         if let match = result.match {
-            return match
+            return match.compactMap {link.run(String($0)).match}
         } else {
             return []
         }
